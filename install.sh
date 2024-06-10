@@ -9,11 +9,11 @@ remove=0
 
 update=0
 
-download_url="https://github.com/Jrohy/trojan/releases/download/"
+download_url="https://github.com/xwooh/trojan/releases/download/"
 
-version_check="https://api.github.com/repos/Jrohy/trojan/releases/latest"
+version_check="https://api.github.com/repos/xwooh/trojan/releases/latest"
 
-service_url="https://raw.githubusercontent.com/Jrohy/trojan/master/asset/trojan-web.service"
+service_url="https://raw.githubusercontent.com/xwooh/trojan/master/asset/trojan-web.service"
 
 [[ -e /var/lib/trojan-manager ]] && update=1
 
@@ -75,7 +75,7 @@ removeTrojan() {
     #移除trojan的专用db
     docker rm -f trojan-mysql trojan-mariadb >/dev/null 2>&1
     rm -rf /home/mysql /home/mariadb >/dev/null 2>&1
-    
+
     #移除环境变量
     sed -i '/trojan/d' ~/.${shell_way}rc
     source ~/.${shell_way}rc
@@ -149,7 +149,7 @@ installTrojan(){
     fi
     lastest_version=$(curl -H 'Cache-Control: no-cache' -s "$version_check" | grep 'tag_name' | cut -d\" -f4)
     echo "正在下载管理程序`colorEcho $blue $lastest_version`版本..."
-    [[ $arch == x86_64 ]] && bin="trojan-linux-amd64" || bin="trojan-linux-arm64" 
+    [[ $arch == x86_64 ]] && bin="trojan-linux-amd64" || bin="trojan-linux-arm64"
     curl -L "$download_url/$lastest_version/$bin" -o /usr/local/bin/trojan
     chmod +x /usr/local/bin/trojan
     if [[ ! -e /etc/systemd/system/trojan-web.service ]];then

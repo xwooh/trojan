@@ -1,5 +1,5 @@
 # trojan
-![](https://img.shields.io/github/v/release/Jrohy/trojan.svg) 
+![](https://img.shields.io/github/v/release/Jrohy/trojan.svg)
 ![](https://img.shields.io/docker/pulls/jrohy/trojan.svg)
 [![Go Report Card](https://goreportcard.com/badge/github.com/Jrohy/trojan)](https://goreportcard.com/report/github.com/Jrohy/trojan)
 [![Downloads](https://img.shields.io/github/downloads/Jrohy/trojan/total.svg)](https://img.shields.io/github/downloads/Jrohy/trojan/total.svg)
@@ -22,23 +22,23 @@ trojan多用户管理部署程序
 - 限制用户使用期限
 
 ## 安装方式
-*trojan使用请提前准备好服务器可用的域名*  
+*trojan使用请提前准备好服务器可用的域名*
 
 ###  a. 一键脚本安装
 ```
 #安装/更新
-source <(curl -sL https://git.io/trojan-install)
+source <(curl -sL https://raw.githubusercontent.com/xwooh/trojan/master/install.sh)
 
 #卸载
-source <(curl -sL https://git.io/trojan-install) --remove
+source <(curl -sL https://raw.githubusercontent.com/xwooh/trojan/master/install.sh) --remove
 
 ```
-安装完后输入'trojan'可进入管理程序   
-浏览器访问 https://域名 可在线web页面管理trojan用户  
-前端页面源码地址: [trojan-web](https://github.com/Jrohy/trojan-web)
+安装完后输入'trojan'可进入管理程序
+浏览器访问 https://域名 可在线web页面管理trojan用户
+前端页面源码地址: [trojan-web](https://github.com/xwooh/trojan-web)
 
 ### b. docker运行
-1. 安装mysql  
+1. 安装mysql
 
 因为mariadb内存使用比mysql至少减少一半, 所以推荐使用mariadb数据库
 ```
@@ -50,13 +50,13 @@ docker run --name trojan-mariadb --restart=always -p 3306:3306 -v /home/mariadb:
 ```
 docker run -it -d --name trojan --net=host --restart=always --privileged jrohy/trojan init
 ```
-运行完后进入容器 `docker exec -it trojan bash`, 然后输入'trojan'即可进行初始化安装   
+运行完后进入容器 `docker exec -it trojan bash`, 然后输入'trojan'即可进行初始化安装
 
-启动web服务: `systemctl start trojan-web`   
+启动web服务: `systemctl start trojan-web`
 
 设置自启动: `systemctl enable trojan-web`
 
-更新管理程序: `source <(curl -sL https://git.io/trojan-install)`
+更新管理程序: `source <(curl -sL https://raw.githubusercontent.com/xwooh/trojan/master/install.sh)`
 
 ## 运行截图
 ![avatar](asset/1.png)
@@ -94,8 +94,8 @@ Flags:
 ```
 
 ## 注意
-安装完trojan后强烈建议开启BBR等加速: [one_click_script](https://github.com/jinwyp/one_click_script)  
+安装完trojan后强烈建议开启BBR等加速: [one_click_script](https://github.com/jinwyp/one_click_script)
 
 ## Thanks
-感谢JetBrains提供的免费GoLand  
+感谢JetBrains提供的免费GoLand
 [![avatar](asset/jetbrains.svg)](https://jb.gg/OpenSource)
